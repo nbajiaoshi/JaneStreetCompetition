@@ -27,10 +27,6 @@ def tread():
 	global FP
 	return json.loads(FP.readline().strip())
 
-def readall():
-	lines = FP.readlines()
-	return lines
-
 def twrite(contentDict):
 	global FP
 	cmd = json.dumps(contentDict)
@@ -66,7 +62,6 @@ def get_msgs():
 class myThread (threading.Thread):
 	def __init__(self):
 		threading.Thread.__init__(self)
-		self._stop = threading.Event()
 		
 	def run(self):
 		try:
@@ -74,10 +69,8 @@ class myThread (threading.Thread):
 				msg = FP.readline().strip()
 				zihao.parse_message(msg)
 		except KeyboardInterrupt:
+			FP.close()
 			sys.exit(0)
-		
-	def stop(self):
-		self._stop.set()
 
 
 if __name__ == "__main__":
