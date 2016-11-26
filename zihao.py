@@ -19,7 +19,7 @@ def parse(msg):
 	msg = json.loads(msg)
 	mtype = msg['type']
 	if mtype == 'book':
-		symbol = str(msg['symble'])
+		symbol = str(msg['symbol'])
 		BOOK[symbol]['sell'] = msg['sell']
 		BOOK[symbol]['buy'] = msg['buy']
 		print(BOOK)
