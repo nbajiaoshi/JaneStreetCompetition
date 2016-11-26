@@ -28,11 +28,12 @@ def tread():
 
 
 def readall():
-	line = tread()
-	while line:
-		line = tread()
-		print(line)
-	time.sleep(1)
+    line = tread()
+    while line:
+        line = tread()
+        print(line)
+    time.sleep(1)
+
 
 def twrite(contentDict):
     global FP
@@ -50,12 +51,13 @@ def upload(contentDict):
 
 
 def hello():
-	respHello = twrite(Constant.MSG_HELLO)
-	return respHello
-	
+    respHello = twrite(Constant.MSG_HELLO)
+    return respHello
+
+
 def start(port, istest):
-	connect(port, istest)
-	thread.start_new_thread ( readall, () )
+    connect(port, istest)
+    thread.start_new_thread(readall, ())
 
 
 if __name__ == "__main__":
