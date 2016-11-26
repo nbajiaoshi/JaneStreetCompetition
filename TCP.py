@@ -34,7 +34,7 @@ def readall():
 def twrite(contentDict):
 	global FP
 	cmd = json.dumps(contentDict)
-	print(cmd)
+	FP.write(cmd)
 	return tread()
 
 def upload(contentDict):
@@ -64,10 +64,6 @@ def get_msgs():
 		print(line)
 		msgs.append(line)
 	return msgs
-	
-def start(port, istrue):
-	connect(port, istrue)
-	thread.start_new_thread ( update_msg, () )
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='data process')
