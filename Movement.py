@@ -60,10 +60,6 @@ if __name__ == '__main__':
 					sell(order_id, symbol, price, size)
 					print('sell order_id={} symbol={} price={} size={}'.format(order_id, symbol, price, size))
 			if movement == 'h':
-				msgs = hello()
-				for msg in msgs:
-					print(msg)
-			if movement == 'c':
 				FP.close()
 				connect(args.port, args.istest)
 				print('connect ok')
@@ -72,6 +68,7 @@ if __name__ == '__main__':
 		except KeyboardInterrupt:
 			recorder.stop()
 			sys.exit(0)
+			
 		except:
 			continue
 	

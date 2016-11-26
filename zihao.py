@@ -24,3 +24,4 @@ def parse_message(line):
 		BOOK_DICT[str(dic['symbol'])]['BUY'] = dic['buy']
 	if dic['type'] == 'hello':
 		HELLO_DICT = dic
+		print(HELLO_DICT)

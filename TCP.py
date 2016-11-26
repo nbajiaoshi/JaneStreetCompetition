@@ -12,7 +12,6 @@ import threading
 import zihao
 
 FP = None
-MSGS = Queue.Queue(maxsize=1000)
 
 def connect(port, istest):
 	global FP
@@ -75,8 +74,6 @@ class myThread (threading.Thread):
 			try:
 				msg = FP.readline().strip()
 				zihao.parse_message(msg)
-				sys.stdout.write(str(zihao.HELLO_DICT) + '\r')
-				sys.stdout.flush()
 			except KeyboardInterrupt:
 				break
 		
