@@ -30,14 +30,14 @@ def cancel(order_id):
 def buy(order_id, symbol, price, size):
 	print('buying:', order_id, symbol, price, size)
 	cmd = add(order_id, symbol, 'BUY', price, size)
-	ORDERS[symbol].append(json.dumps(cmd))
+	ORDERS[symbol].append(cmd)
 	return cmd
 
 
 def sell(order_id, symbol, price, size):
 	print('selling:', order_id, symbol, price, size)
 	cmd = add(order_id, symbol, 'SELL', price, size)
-	ORDERS[symbol].append(json.dumps(cmd))
+	ORDERS[symbol].append(cmd)
 	return cmd
 
 def init():
