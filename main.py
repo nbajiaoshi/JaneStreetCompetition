@@ -14,9 +14,13 @@ if __name__ == '__main__':
 	print('connect ok')
 	hello()
 	
+	
 	while True:
-		response = FP.readline()
-		parse(response)
+		for i in range(10000):
+			response = FP.readline()
+			parse(response)
 		for stock_symbol in STOCK_NAME:
 			run_strategy(stock_symbol, get_current_book(stock_symbol),
 						 get_our_order(stock_symbol), get_historical_trade(stock_symbol))
+		
+						 
