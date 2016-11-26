@@ -19,7 +19,7 @@ def get_historical_trade(symbol):
 
 
 def get_our_order(symbol):
-	return []
+	return ORDER[symbol]
 
 
 def get_fair_price(current_book, historical_trade):
