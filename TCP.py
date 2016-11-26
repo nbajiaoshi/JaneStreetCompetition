@@ -9,6 +9,7 @@ import argparse
 import Queue
 import Constant
 import threading
+import zihao
 
 FP = None
 MSGS = Queue.Queue(maxsize=1000)
@@ -63,13 +64,19 @@ def get_msgs():
 		msgs.append(line)
 	return msgs
 	
+	
 class myThread (threading.Thread):
 	def __init__(self):
 		threading.Thread.__init__(self)
 		
 	def run(self):
 		while True:
-			msg = FP.readline().strip()
+			try:
+				msg = FP.readline().strip()
+				zihao.parse_message(msg)
+				print(json.dumps(zihao.BOOK_DICT, indent=4))
+			except KeyboardInterrupt:
+				break
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='data process')
