@@ -4,6 +4,7 @@ import time
 import argparse
 
 import Constant
+import Recorder
 from TCP import *
 
 
@@ -40,6 +41,8 @@ if __name__ == '__main__':
 	
 	connect(args.port, args.istest)
 	print('connect ok')
+	recorder = Recorder.myThread(FP)
+	recorder.start()
 	while True:
 		try:
 			cmd = raw_input('CMD: b|s order_id symbol price size\n')

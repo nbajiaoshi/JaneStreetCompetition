@@ -61,7 +61,6 @@ def hello(tries=100):
 	
 def update_msg():
 	while True:
-		
 		for line in lines:
 			MSGS.put(line)
 		time.sleep(1)
