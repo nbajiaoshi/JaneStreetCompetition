@@ -59,11 +59,14 @@ def parse(msg):
 	elif mtype == 'trade':
 		symbol = str(msg['symbol'])
 		try:
-			TRADE[symbol].append((int(msg['price'], int(msg['size']))))
-			if len(TRADE[symbol] > 1000):
+			price = int(msg['price'])
+			size = int(msg['size'])
+			TRADE[symbol].append((price, size))
+			if len(TRADE[symbol]) > 1000:
 				TRADE[symbol] = TRADE[symbol][-1000:]
 		except Exception as e:
 			print(msg)
+			print(msg['price'], msg['size'])
 			print('@parse {}'.format(e))
 	elif mtype == 'fill':
 		print(msg)
