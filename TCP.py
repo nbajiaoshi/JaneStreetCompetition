@@ -65,10 +65,14 @@ class myThread (threading.Thread):
 		
 	def run(self):
 		try:
+			tries = 0
 			while True:
-				
+				tries += 1
+				print('reading')
 				msg = FP.readline().strip()
 				zihao.parse_message(msg)
+				if tries > 100:
+					time.sleep(1)
 		except KeyboardInterrupt:
 			FP.close()
 			sys.exit(0)
