@@ -74,7 +74,8 @@ class myThread (threading.Thread):
 			try:
 				msg = FP.readline().strip()
 				zihao.parse_message(msg)
-				print(json.dumps(zihao.BOOK_DICT, indent=4))
+				sys.stdout.write(str(zihao.HELLO_DICT) + '\r')
+				sys.flush()
 			except KeyboardInterrupt:
 				break
 
