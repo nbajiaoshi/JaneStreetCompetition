@@ -81,9 +81,9 @@ def run_strategy(symbol, current_book, our_order, historical_trade):
 		return
 	current_avg = (current_book["buy"][0][0] + current_book["sell"][0][0]) / 2
 	# fair_price = get_fair_price(current_book, historical_trade)
-	if should_buy(our_order):
+	if should_buy(our_order, current_book):
 		buy_current_price(symbol)
-	if should_sell(our_order):
+	if should_sell(our_order, current_book):
 		sell_current_price(symbol)
 
 
