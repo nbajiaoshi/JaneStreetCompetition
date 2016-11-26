@@ -45,9 +45,11 @@ if __name__ == '__main__':
 	hello()
 	buy(1, 'BOND', 1000, 20)
 	sell(1, 'SELL', 1001, 20)
-	connect(args.port, args.istest)
-	print('connect ok')
-	hello()
+	for looper in range(100):
+		connect(args.port, args.istest)
+		print('connect ok')
+		hello()
+		print(zihao.BOOK_DICT)
 	# while True:
 	# 	try:
 	# 		cmd = raw_input('CMD: b|s order_id symbol price size\n')
