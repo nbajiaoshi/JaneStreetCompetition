@@ -43,28 +43,28 @@ if __name__ == '__main__':
 	print('connect ok')
 	recorder = Recorder.myThread(FP)
 	recorder.start()
-	while True:
-		try:
-			cmd = raw_input('CMD: b|s order_id symbol price size\n')
-			parts = cmd.strip().split(' ')
-			movement = parts[0]
-			if movement == 'b' or movement == 's':
-				order_id = int(parts[1])
-				symbol = parts[2]
-				price = int(parts[3])
-				size = int(parts[4])
-				if movement == 'b':
-					buy(order_id, symbol, price, size)
-					print('buy order_id={} symbol={} price={} size={}'.format(order_id, symbol, price, size))
-				else:
-					sell(order_id, symbol, price, size)
-					print('sell order_id={} symbol={} price={} size={}'.format(order_id, symbol, price, size))
-			if movement == 'h':
-				msgs = hello(None)
-				for msg in msgs:
-					print(msg)
-		except KeyboardInterrupt:
-			break
-		except:
-			continue
+	# while True:
+	# 	try:
+	# 		cmd = raw_input('CMD: b|s order_id symbol price size\n')
+	# 		parts = cmd.strip().split(' ')
+	# 		movement = parts[0]
+	# 		if movement == 'b' or movement == 's':
+	# 			order_id = int(parts[1])
+	# 			symbol = parts[2]
+	# 			price = int(parts[3])
+	# 			size = int(parts[4])
+	# 			if movement == 'b':
+	# 				buy(order_id, symbol, price, size)
+	# 				print('buy order_id={} symbol={} price={} size={}'.format(order_id, symbol, price, size))
+	# 			else:
+	# 				sell(order_id, symbol, price, size)
+	# 				print('sell order_id={} symbol={} price={} size={}'.format(order_id, symbol, price, size))
+	# 		if movement == 'h':
+	# 			msgs = hello(None)
+	# 			for msg in msgs:
+	# 				print(msg)
+	# 	except KeyboardInterrupt:
+	# 		break
+	# 	except:
+	# 		continue
 	
