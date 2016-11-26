@@ -66,6 +66,7 @@ if __name__ == '__main__':
 				hello()
 				
 		except:
+			break
 			sys.exit(0)
 			
 	
