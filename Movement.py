@@ -42,6 +42,7 @@ if __name__ == '__main__':
 	recorder = myThread()
 	recorder.start()
 	
+	
 	# while True:
 	# 	try:
 	# 		cmd = raw_input('CMD: b|s order_id symbol price size\n')
