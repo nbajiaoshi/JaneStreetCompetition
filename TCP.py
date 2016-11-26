@@ -53,6 +53,7 @@ def update_msg():
 		lines = readall()
 		for line in lines:
 			MSGS.put(line)
+		time.sleep(1)
 		
 def get_msgs():
 	msgs = []
