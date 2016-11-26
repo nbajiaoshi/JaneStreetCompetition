@@ -77,14 +77,17 @@ def sell_lower_price(symbol, current_book):
 
 def run_strategy(symbol, current_book, our_order, historical_trade):
 
-	if len(current_book["buy"]) == 0 or len(current_book["sell"]) == 0:
-		return
-	current_avg = (current_book["buy"][0][0] + current_book["sell"][0][0]) / 2
-	fair_price = get_fair_price(current_book, historical_trade)
-	if should_buy(our_order, current_book) and current_book["buy"][0][0] < fair_price:
-		buy_current_price(symbol, current_book)
-	if should_sell(our_order, current_book) and current_book['sell'][0][0] > fair_price:
-		sell_current_price(symbol, current_book)
+	try:
+		if len(current_book["buy"]) == 0 or len(current_book["sell"]) == 0:
+			return
+		current_avg = (current_book["buy"][0][0] + current_book["sell"][0][0]) / 2
+		fair_price = get_fair_price(current_book, historical_trade)
+		if should_buy(our_order, current_book) and current_book["buy"][0][0] < fair_price:
+			buy_current_price(symbol, current_book)
+		if should_sell(our_order, current_book) and current_book['sell'][0][0] > fair_price:
+			sell_current_price(symbol, current_book)
+	except:
+		pass
 
 
 if __name__ == '__main__':
