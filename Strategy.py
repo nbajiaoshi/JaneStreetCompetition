@@ -5,7 +5,7 @@ from Constant import *
 from zihao import *
 
 HISTORICAL_LOOK_FORWARD = 10000
-TRANSACTION_SIZE = 3
+TRANSACTION_SIZE = 20
 
 current_order_id = 65487
 
