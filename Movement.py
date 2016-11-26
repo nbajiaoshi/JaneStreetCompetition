@@ -31,7 +31,8 @@ if __name__ == '__main__':
 	parser.add_argument('--istest', '-t', action="store_true", help='reload data, else load from cache')
 	args = parser.parse_args()
 	
-	connect(args.port, args.istest)
-	print(buy(1, 'BOND', 999, 1000))
-	print(sell(2, 'BOND', 1000, 1000))
-	print(hello())
+	while true:
+		connect(args.port, args.istest)
+		print(buy(1, 'BOND', 999, 1000))
+		print(sell(2, 'BOND', 1000, 1000))
+		print(hello())
