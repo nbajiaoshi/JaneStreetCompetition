@@ -36,8 +36,6 @@ def twrite(contentDict):
     cmd = json.dumps(contentDict)
     print(cmd, file=FP)
 
-	open('').
-
 def upload(contentDict):
     respHello = twrite(Constant.MSG_HELLO)
     if contentDict is None:
@@ -56,9 +54,13 @@ def update_msg():
 		for line in lines:
 			MSGS.put(line)
 		
-def show_msg():
-	for line in MSGS:
+def get_msgs():
+	msgs = []
+	while MSGS.qsize() > 0:
+		line = MSGS.get()
 		print(line)
+		msgs.append(line)
+	return msgs
 	
 def start(port, istrue):
 	connect(port, istrue)
