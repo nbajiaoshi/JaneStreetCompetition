@@ -35,7 +35,6 @@ def twrite(contentDict):
 	global FP
 	cmd = json.dumps(contentDict)
 	print(cmd, file=FP)
-	return tread()
 
 def upload(contentDict):
 	respHello = twrite(Constant.MSG_HELLO)
@@ -70,12 +69,12 @@ class myThread (threading.Thread):
 		self._stop = threading.Event()
 		
 	def run(self):
-		while True:
-			try:
+		try:
+			while True:
 				msg = FP.readline().strip()
 				zihao.parse_message(msg)
-			except KeyboardInterrupt:
-				break
+		except KeyboardInterrupt:
+			break
 		
 	def stop(self):
 		self._stop.set()
