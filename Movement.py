@@ -59,7 +59,7 @@ if __name__ == '__main__':
 			if movement == 'h':
 				msgs = hello()
 				for msg in msgs:
-					print msg
+					print(msg)
 		except KeyboardInterrupt:
 			break
 		except:
