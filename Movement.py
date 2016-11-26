@@ -17,7 +17,7 @@ def convert(order_id, symbol, direction, size):
     return upload(cmd)
 
 
-def cancel():
+def cancel(order_id):
     cmd = {"type": "cancel", "order_id": order_id}
     return upload(cmd)
 
