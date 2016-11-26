@@ -83,7 +83,7 @@ def run_strategy(symbol, current_book, our_order, historical_trade):
 
 if __name__ == '__main__':
     while True:
-
+        for stock_symbol in STO
         run_strategy()
 
 
