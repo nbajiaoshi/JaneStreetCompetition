@@ -2,7 +2,7 @@ from time import sleep
 
 import Movement
 from Constant import *
-from zihao import BOOK
+from zihao import *
 
 HISTORICAL_LOOK_FORWARD = 100
 TRANSACTION_SIZE = 3
@@ -15,7 +15,7 @@ def get_current_book(symbol):
 
 
 def get_historical_trade(symbol):
-	return []
+	return TRADE[symbol]
 
 
 def get_our_order(symbol):
@@ -26,8 +26,8 @@ def get_fair_price(current_book, historical_trade):
 	sum = 0
 	num = 0
 	for i in range(max(0, len(historical_trade) - HISTORICAL_LOOK_FORWARD), len(historical_trade)):
-		sum += historical_trade[i]["price"] * historical_trade[i]["size"]
-		num += historical_trade[i]["size"]
+		sum += historical_trade[i][0] * historical_trade[i][1]
+		num += historical_trade[i][1]
 	historical_avg = sum / num
 	return historical_avg
 
@@ -80,10 +80,10 @@ def run_strategy(symbol, current_book, our_order, historical_trade):
 	if len(current_book["buy"]) == 0 or len(current_book["sell"]) == 0:
 		return
 	current_avg = (current_book["buy"][0][0] + current_book["sell"][0][0]) / 2
-	# fair_price = get_fair_price(current_book, historical_trade)
-	if should_buy(our_order, current_book):
+	fair_price = get_fair_price(current_book, historical_trade)
+	if should_buy(our_order, current_book) and current_book["buy"][0][0] < fair_price:
 		buy_current_price(symbol, current_book)
-	if should_sell(our_order, current_book):
+	if should_sell(our_order, current_book) and current_book['sell'][0][0] > fair_price:
 		sell_current_price(symbol, current_book)
 
 
