@@ -68,6 +68,7 @@ def get_msgs():
 class myThread (threading.Thread):
 	def __init__(self):
 		threading.Thread.__init__(self)
+		self._stop = threading.Event()
 		
 	def run(self):
 		while True:
