@@ -4,7 +4,7 @@ import Movement
 from Constant import *
 from zihao import *
 
-HISTORICAL_LOOK_FORWARD = 100
+HISTORICAL_LOOK_FORWARD = 10000
 TRANSACTION_SIZE = 3
 
 current_order_id = 65487
