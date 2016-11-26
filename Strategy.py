@@ -1,5 +1,8 @@
+from time import sleep
+
 import Movement
 from Constant import *
+from zihao import BOOK_DICT
 
 HISTORICAL_LOOK_FORWARD = 100
 TRANSACTION_SIZE = 3
@@ -8,7 +11,7 @@ current_order_id = 65487
 
 
 def get_current_book(symbol):
-    return []
+    return BOOK_DICT[symbol]
 
 
 def get_historical_trade(symbol):
@@ -30,6 +33,7 @@ def get_fair_price(current_book, historical_trade):
 
 
 def should_buy(our_order, current_book):
+    return True
     for order in our_order:
         if order["dir"] == "BUY" and order["prize"] == current_book["buy"][0]:
             return False
@@ -37,6 +41,7 @@ def should_buy(our_order, current_book):
 
 
 def should_sell(our_order, current_book):
+    return True
     for order in our_order:
         if order["dir"] == "SELL" and order["prize"] > current_book["sell"][0] + 5:
             Movement.cancel(order["order_id"])
@@ -75,7 +80,7 @@ def run_strategy(symbol, current_book, our_order, historical_trade):
     if len(current_book["buy"]) == 0 or len(current_book["sell"]) == 0:
         return
     current_avg = (current_book["buy"][0][0] + current_book["sell"][0][0]) / 2
-    fair_price = get_fair_price(current_book, historical_trade)
+    # fair_price = get_fair_price(current_book, historical_trade)
     if should_buy(our_order):
         buy_current_price(symbol)
     if should_sell(our_order):
@@ -87,6 +92,7 @@ if __name__ == '__main__':
         for stock_symbol in STOCK_NAME:
             run_strategy(stock_symbol, get_current_book(stock_symbol),
                          get_our_order(stock_symbol), get_historical_trade(stock_symbol))
+        sleep(0.05)
 
 
 
