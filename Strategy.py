@@ -1,6 +1,9 @@
 import Movement
 
 HISTORICAL_LOOK_FORWARD = 100
+TRANSACTION_SIZE = 3
+
+current_order_id = 65487
 
 
 def get_current_book(symbol):
@@ -25,18 +28,16 @@ def get_fair_price(current_book, historical_trade):
     return historical_avg
 
 
-def should_buy(our_order, current_avg, current_book):
-    num = 0
+def should_buy(our_order, current_book):
     for order in our_order:
         if order["dir"] == "BUY" and order["prize"] == current_book["buy"][0]:
             return False
     return True
 
 
-def should_sell(our_order, current_avg, current_book):
-    num = 0
+def should_sell(our_order, current_book):
     for order in our_order:
-        if order["dir"] == "SELL" and order["prize"] < current_book["sell"][0]:
+        if order["dir"] == "SELL" and order["prize"] > current_book["sell"][0] + 5:
             Movement.cancel(order["order_id"])
     for order in our_order:
         if order["dir"] == "SELL" and order["prize"] == current_book["sell"][0]:
@@ -44,10 +45,46 @@ def should_sell(our_order, current_avg, current_book):
     return True
 
 
+def buy_current_price(symbol, current_book):
+    global current_order_id
+    current_order_id += 1
+    Movement.buy(current_order_id, symbol, current_book["buy"][0], TRANSACTION_SIZE)
 
-def run_strategy(current_book, our_order, historical_trade):
+
+def buy_higher_price(symbol, current_book):
+    global current_order_id
+    current_order_id += 1
+    Movement.buy(current_order_id, symbol, current_book["buy"][0] + 1, TRANSACTION_SIZE)
+
+
+def sell_current_price(symbol, current_book):
+    global current_order_id
+    current_order_id += 1
+    Movement.buy(current_order_id, symbol, current_book["sell"][0], TRANSACTION_SIZE)
+
+
+def sell_lower_price(symbol, current_book):
+    global current_order_id
+    current_order_id += 1
+    Movement.buy(current_order_id, symbol, current_book["sell"][0] - 1, TRANSACTION_SIZE)
+
+
+def run_strategy(symbol, current_book, our_order, historical_trade):
+
     if len(current_book["buy"]) == 0 or len(current_book["sell"]) == 0:
         return
     current_avg = (current_book["buy"][0][0] + current_book["sell"][0][0]) / 2
     fair_price = get_fair_price(current_book, historical_trade)
+    if should_buy(our_order):
+        buy_current_price(symbol)
+    if should_sell(our_order):
+        sell_current_price(symbol)
+
+
+if __name__ == '__main__':
+    while True:
+
+        run_strategy()
+
+
 
