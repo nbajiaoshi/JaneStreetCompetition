@@ -55,9 +55,12 @@ def parse(msg):
 		BOOK[symbol]['buy'] = msg['buy']
 	elif mtype == 'trade':
 		symbol = str(msg['symbol'])
-		TRADE[symbol].append((int(msg['price'], int(msg['size']))))
-		if len(TRADE[symbol] > 1000):
-			TRADE[symbol] = TRADE[symbol][-1000:]
+		try:
+			TRADE[symbol].append((int(msg['price'], int(msg['size']))))
+			if len(TRADE[symbol] > 1000):
+				TRADE[symbol] = TRADE[symbol][-1000:]
+		except:
+			pass
 	elif mtype == 'fill':
 		symbol = str(msg['symbol'])
 		direction = 2 * int(msg['dir'] == 'BUY') - 1
