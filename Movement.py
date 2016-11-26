@@ -40,13 +40,12 @@ if __name__ == '__main__':
 	
 	try:
 		start(args.port, args.istest)
-		print(buy(1, 'BOND', 1000, 1000))
-		print(sell(2, 'BOND', 1001, 1000))
 		while True:
-			time.sleep(5)
+			print(buy(1, 'BOND', 1000, 10))
+			print(sell(2, 'BOND', 1001, 10))
+			time.sleep(3)
 	except:
-		start(args.port, args.istest)
-		print(buy(1, 'BOND', 1000, 1000))
-		print(sell(2, 'BOND', 1001, 1000))
 		while True:
-			time.sleep(5)
+			print(buy(1, 'BOND', 1000, 10))
+			print(sell(2, 'BOND', 1001, 10))
+			time.sleep(3)
