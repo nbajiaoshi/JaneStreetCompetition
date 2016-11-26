@@ -88,6 +88,7 @@ def run_strategy(symbol, current_book, our_order, historical_trade):
 
 
 if __name__ == '__main__':
+    Movement.init()
     while True:
         for stock_symbol in STOCK_NAME:
             run_strategy(stock_symbol, get_current_book(stock_symbol),
