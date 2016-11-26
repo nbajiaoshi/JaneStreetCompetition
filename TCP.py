@@ -74,7 +74,7 @@ class myThread (threading.Thread):
 				if tries > 100:
 					time.sleep(1)
 		except KeyboardInterrupt:
-			FP.close()
+			return
 			sys.exit(0)
 
 
