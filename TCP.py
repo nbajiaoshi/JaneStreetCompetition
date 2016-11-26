@@ -74,7 +74,7 @@ class myThread (threading.Thread):
 				msg = FP.readline().strip()
 				zihao.parse_message(msg)
 		except KeyboardInterrupt:
-			break
+			sys.exit(0)
 		
 	def stop(self):
 		self._stop.set()
