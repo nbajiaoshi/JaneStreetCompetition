@@ -25,4 +25,3 @@ def parse(msg):
 		print(BOOK)
 	else:
 		pass
-

@@ -26,6 +26,7 @@ def tread():
 	global FP
 	return FP.readline().strip()
 
+
 def readall():
 	lines = []
 	line = FP.readline()
@@ -35,10 +36,12 @@ def readall():
 			break
 	return lines
 
+
 def twrite(contentDict):
 	global FP
 	cmd = json.dumps(contentDict)
 	print(cmd, file=FP)
+
 
 def upload(contentDict):
 	resp = twrite(contentDict)
@@ -48,13 +51,15 @@ def upload(contentDict):
 def hello():
 	twrite(Constant.MSG_HELLO)
 	
+	
 def update_msg():
 	while True:
-		
+
 		for line in lines:
 			MSGS.put(line)
 		time.sleep(1)
-		
+
+
 def get_msgs():
 	msgs = []
 	while MSGS.qsize() > 0:
@@ -62,10 +67,12 @@ def get_msgs():
 		print(line)
 		msgs.append(line)
 	return msgs
-	
+
+
 def start(port, istrue):
 	connect(port, istrue)
-	thread.start_new_thread ( update_msg, () )
+	thread.start_new_thread(update_msg, ())
+
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='data process')
@@ -77,4 +84,3 @@ if __name__ == "__main__":
 	connect(args.port)
 	resp = upload({"type": "add", "order_id": 1, "symbol": "BOND", "dir": "BUY", "price": 950, "size": 5})
 	print(resp)
-	
