@@ -17,5 +17,5 @@ def init_books():
 def parse_message(line):
 	dic = json.loads(line)
 	if dic['type'] == 'book':
-		BOOK_DICT[dic['symbol']]['SELL'] = dic['sell']
-		BOOK_DICT[dic['symbol']]['BUY'] = dic['buy']
+		BOOK_DICT[str(dic['symbol'])]['SELL'] = dic['sell']
+		BOOK_DICT[str(dic['symbol'])]['BUY'] = dic['buy']
