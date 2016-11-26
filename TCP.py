@@ -12,7 +12,6 @@ import Constant
 FP = None
 MSGS = Queue.Queue(maxsize=1000)
 
-
 def connect(port, istest):
 	global FP
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -25,7 +24,7 @@ def connect(port, istest):
 
 def tread():
 	global FP
-	return FP.readline().strip()
+	return json.loads(FP.readline().strip())
 
 def readall():
 	lines = FP.readlines()
@@ -47,6 +46,9 @@ def upload(contentDict):
 
 def hello():
 	respHello = twrite(Constant.MSG_HELLO)
+	while respHello:
+		if respHello['type'] !='hello':
+			respHello = tread()
 	print(respHello)
 	return respHello
 	
