@@ -1,6 +1,7 @@
 from __future__ import print_function
 
 import sys
+import time
 import json
 import socket
 import thread
@@ -31,6 +32,7 @@ def readall():
 	while line:
 		line = tread()
 		print(line)
+	time.sleep(1)
 
 def twrite(contentDict):
     global FP
