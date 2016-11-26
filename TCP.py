@@ -12,7 +12,7 @@ FP = None
 def connect(port):
 	global FP
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.connect(("test-exch-{}".format(Constant.teamname), port))
+	s.connect(("test-exch-{}".format(Constant.TEAMNAME), port))
 	FP = s.makefile('w+', 1)
 	
 def tread():
@@ -23,13 +23,10 @@ def twrite(contentDict):
 	global FP
 	cmd = json.dumps(contentDict)
 	print(cmd, file=FP)
-	return json.loads(read())
+	return json.loads(tread())
 
 def upload(contentDict):
 	respHello = twrite(Constant.MSG_HELLO)
-	respType = respHello['type']
-	if respType['type'] != 'hello':
-		return False
 	if contentDict is None:
 		return respHello
 	resp = twrite(contentDict)
@@ -37,9 +34,6 @@ def upload(contentDict):
 	
 def hello():
 	respHello = twrite(Constant.MSG_HELLO)
-	respType = respHello['type']
-	if respType['type'] != 'hello':
-		return False
 	return respHello
 
 if __name__ == "__main__":
