@@ -75,7 +75,7 @@ class myThread (threading.Thread):
 				msg = FP.readline().strip()
 				zihao.parse_message(msg)
 				sys.stdout.write(str(zihao.HELLO_DICT) + '\r')
-				sys.flush()
+				sys.stdout.flush()
 			except KeyboardInterrupt:
 				break
 

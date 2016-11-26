@@ -64,7 +64,7 @@ if __name__ == '__main__':
 				for msg in msgs:
 					print(msg)
 		except KeyboardInterrupt:
-			break
+			sys.exit(0)
 		except:
 			continue
 	
