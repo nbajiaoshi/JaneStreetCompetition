@@ -11,8 +11,39 @@ def init_books():
 				 'XLF': none_dict, 
 	}
 	return init_dict
+	
+def init_trades():
+	init_dict = {'BOND': [],
+				 'VALBZ': [],
+				 'VALE': [],
+				 'GS': [],
+				 'MS': [],
+				 'WFC': [],
+				 'XLF': [], 
+	}
+	return init_dict
 
 BOOK = init_books()
+TRADE = init_trades()
+
+POSITION = {
+			'BOND': 0,
+			 'VALBZ': 0,
+			 'VALE': 0,
+			 'GS': 0,
+			 'MS': 0,
+			 'WFC': 0,
+			 'XLF': 0, 
+}
+
+'''
+	key: order_id
+	value:
+		(1) {"type": "add", "order_id": N, "symbol": "SYM", "dir": "BUY", "price": N, "size": N}
+		(2) {"type": "convert", "order_id": N, "symbol": "SYM", "dir": "BUY", "size": N}
+		(3) {"type": "cancel", "order_id": N}
+'''
+order_dict = {}
 
 def parse(msg):
 	global BOOK
@@ -22,6 +53,19 @@ def parse(msg):
 		symbol = str(msg['symbol'])
 		BOOK[symbol]['sell'] = msg['sell']
 		BOOK[symbol]['buy'] = msg['buy']
-		print(BOOK)
-	else:
+	elif mtype == 'trade':
+		symbol = str(msg['symbol'])
+		TRADE[symbol].append((int(msg['price'], int(msg['size']))))
+		if len(TRADE[symbol] > 1000):
+			TRADE[symbol] = TRADE[symbol][-1000:]
+	elif mtype == 'fill':
+		symbol = str(msg['symbol'])
+		direction = 2 * int(msg['dir'] == 'BUY') - 1
+		POSITION[symbol] += direction * int(msg['size'])
+	elif mtype == 'ack':
 		pass
+	elif mtype == 'reject':
+		pass
+	elif mtype == 'out':
+		pass
+		

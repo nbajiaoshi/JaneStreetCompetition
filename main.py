@@ -1,6 +1,7 @@
 from zihao import *
 from Constant import *
 from TCP import *
+from Strategy import *
 
 
 if __name__ == '__main__':
@@ -15,4 +16,7 @@ if __name__ == '__main__':
 	
 	while True:
 		response = FP.readline()
-		zihao.parse(response)
+		parse(response)
+		for stock_symbol in STOCK_NAME:
+			run_strategy(stock_symbol, get_current_book(stock_symbol),
+						 get_our_order(stock_symbol), get_historical_trade(stock_symbol))
