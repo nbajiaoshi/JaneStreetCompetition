@@ -64,6 +64,7 @@ def parse(msg):
 				TRADE[symbol] = TRADE[symbol][-1000:]
 		except Exception as e:
 			print(msg)
+			print(msg['price'], msg['size'])
 			print('@parse {}'.format(e))
 	elif mtype == 'fill':
 		print(msg)
