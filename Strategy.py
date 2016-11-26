@@ -33,7 +33,6 @@ def get_fair_price(current_book, historical_trade):
 
 
 def should_buy(our_order, current_book):
-    return True
     for order in our_order:
         if order["dir"] == "BUY" and order["prize"] == current_book["buy"][0][0]:
             return False
