@@ -49,7 +49,9 @@ if __name__ == '__main__':
 		connect(args.port, args.istest)
 		print('connect ok')
 		hello()
+		print(zihao.HELLO_DICT)
 		print(zihao.BOOK_DICT)
+		time.sleep(5)
 	# while True:
 	# 	try:
 	# 		cmd = raw_input('CMD: b|s order_id symbol price size\n')
