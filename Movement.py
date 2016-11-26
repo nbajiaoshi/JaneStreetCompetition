@@ -34,6 +34,6 @@ if __name__ == '__main__':
 	args = parser.parse_args()
 	
 	connect(args.port, args.istest)
-	print(buy(1, 'BOND', 999, 1000))
-	print(sell(2, 'BOND', 1000, 1000))
+	print(buy(1, 'BOND', 1000, 1000))
+	print(sell(2, 'BOND', 1001, 1000))
 	print(hello())
