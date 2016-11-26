@@ -96,6 +96,8 @@ def parse(msg):
 			if order['order_id'] == orderid:
 				ORDERS[symbol][i]['size'] -= int(msg['size'])
 				break
+		if direction == 'BUY':
+			IN_PRICE[symbol] = int(msg['price'])
 	elif mtype == 'ack':
 		pass
 	elif mtype == 'reject':
