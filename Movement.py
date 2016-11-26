@@ -65,7 +65,7 @@ if __name__ == '__main__':
 				print('connect ok')
 				hello()
 				
-		except KeyboardInterrupt:
-			recorder.stop()
+		except:
 			sys.exit(0)
+			
 	
