@@ -44,7 +44,7 @@ def upload(contentDict):
 	return resp
 
 
-def hello():
+def hello(tries=100):
 	respHello = twrite(Constant.MSG_HELLO)
 	msgs = []
 	tries = 100
@@ -52,9 +52,10 @@ def hello():
 		msgs.append(respHello)
 		if respHello[u'type'] != u'hello':
 			respHello = tread()
-			tries -= 1
-			if tries < 0:
-				break
+			if tries is not None:
+				tries -= 1
+				if tries < 0:
+					break
 		else:
 			break
 	return msgs
