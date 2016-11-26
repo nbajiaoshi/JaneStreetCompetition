@@ -86,8 +86,8 @@ def run_strategy(symbol, current_book, our_order, historical_trade):
 			buy_current_price(symbol, current_book)
 		if should_sell(our_order, current_book) and current_book['sell'][0][0] > fair_price:
 			sell_current_price(symbol, current_book)
-	except:
-		pass
+	except Exception as e:
+		print(e)
 
 
 if __name__ == '__main__':
