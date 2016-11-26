@@ -47,7 +47,6 @@ def upload(contentDict):
 def hello(tries=100):
 	respHello = twrite(Constant.MSG_HELLO)
 	msgs = []
-	tries = 100
 	while respHello:
 		msgs.append(respHello)
 		if respHello[u'type'] != u'hello':
