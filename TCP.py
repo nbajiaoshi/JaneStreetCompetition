@@ -9,10 +9,13 @@ import Constant
 
 FP = None
 
-def connect(port):
+def connect(port, istest):
 	global FP
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.connect(("test-exch-{}".format(Constant.TEAMNAME), port))
+	host = 'production'
+	if istest:
+		host = "test-exch-{}".format(Constant.TEAMNAME)
+	s.connect((host, port))
 	FP = s.makefile('w+', 1)
 	
 def tread():

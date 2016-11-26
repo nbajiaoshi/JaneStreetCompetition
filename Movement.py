@@ -28,9 +28,10 @@ def sell(order_id, symbol, price, size):
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='data process')
 	parser.add_argument('--port', '-p', type=int, help='port', default=25000)
+	parser.add_argument('--istest', '-t', action="store_true", help='reload data, else load from cache')
 	args = parser.parse_args()
 	
-	connect(args.port)
-	print(buy(1, 'BOND', 995, 1000))
-	print(sell(2, 'BOND', 1005, 1000))
+	connect(args.port, args.istest)
+	print(buy(1, 'BOND', 999, 1000))
+	print(sell(2, 'BOND', 1000, 1000))
 	print(hello())
