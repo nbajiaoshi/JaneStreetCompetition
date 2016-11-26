@@ -39,13 +39,14 @@ if __name__ == '__main__':
 	args = parser.parse_args()
 	
 	connect(args.port, args.istest)
-	print('connect ok')
-	hello()
 	recorder = myThread()
 	recorder.start()
+	print('connect ok')
+	hello()
 	buy(1, 'BOND', 1000, 20)
 	sell(1, 'SELL', 1001, 20)
 	connect(args.port, args.istest)
+	print('connect ok')
 	hello()
 	# while True:
 	# 	try:
