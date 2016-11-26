@@ -47,7 +47,10 @@ order_dict = {}
 
 def parse(msg):
 	global BOOK
-	msg = json.loads(msg)
+	try:
+		msg = json.loads(msg)
+	except:
+		return
 	mtype = msg['type']
 	if mtype == 'book':
 		symbol = str(msg['symbol'])

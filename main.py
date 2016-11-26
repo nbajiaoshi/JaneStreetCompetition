@@ -16,7 +16,7 @@ if __name__ == '__main__':
 	
 	
 	while True:
-		for i in range(1000):
+		for i in range(200):
 			response = FP.readline()
 			parse(response)
 		for stock_symbol in STOCK_NAME:
