@@ -8,6 +8,7 @@ import thread
 import argparse
 import Queue
 import Constant
+import threading
 
 FP = None
 MSGS = Queue.Queue(maxsize=1000)
