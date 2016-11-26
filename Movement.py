@@ -4,7 +4,6 @@ import time
 import argparse
 
 import Constant
-import Recorder
 from TCP import *
 
 
@@ -41,7 +40,7 @@ if __name__ == '__main__':
 	
 	connect(args.port, args.istest)
 	print('connect ok')
-	recorder = Recorder.myThread(FP)
+	recorder = myThread()
 	recorder.start()
 	# while True:
 	# 	try:
