@@ -1,4 +1,5 @@
 import Movement
+from Constant import *
 
 HISTORICAL_LOOK_FORWARD = 100
 TRANSACTION_SIZE = 3
@@ -83,8 +84,10 @@ def run_strategy(symbol, current_book, our_order, historical_trade):
 
 if __name__ == '__main__':
     while True:
-        for stock_symbol in STO
-        run_strategy()
+        for stock_symbol in STOCK_NAME:
+            run_strategy(stock_symbol, get_current_book(stock_symbol),
+                         get_our_order(stock_symbol), get_historical_trade(stock_symbol))
+
 
 
 
