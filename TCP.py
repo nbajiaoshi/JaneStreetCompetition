@@ -34,6 +34,7 @@ def readall():
 def twrite(contentDict):
 	global FP
 	cmd = json.dumps(contentDict)
+	print(cmd)
 	return tread()
 
 def upload(contentDict):
