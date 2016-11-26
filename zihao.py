@@ -25,7 +25,15 @@ def init_trades():
 
 BOOK = init_books()
 TRADE = init_trades()
-ORDERS = []
+ORDERS = {
+			'BOND': [],
+			 'VALBZ': [],
+			 'VALE': [],
+			 'GS': [],
+			 'MS': [],
+			 'WFC': [],
+			 'XLF': [], 
+}
 
 POSITION = {
 			'BOND': 0,
@@ -75,9 +83,9 @@ def parse(msg):
 		symbol = str(msg['symbol'])
 		direction = str(msg['dir'])
 		orderid = int(msg['order_id'])
-		for i, order in enumerate(ORDERS):
+		for i, order in enumerate(ORDERS[symbol]):
 			if order['order_id'] == orderid:
-				ORDERS[i]['size'] -= int(msg['size'])
+				ORDERS[symbol][i]['size'] -= int(msg['size'])
 				break
 	elif mtype == 'ack':
 		pass
