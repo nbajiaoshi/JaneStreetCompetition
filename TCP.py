@@ -80,7 +80,7 @@ class myThread (threading.Thread):
 				break
 		
 	def stop(self):
-        self._stop.set()
+		self._stop.set()
 
 
 if __name__ == "__main__":
