@@ -33,11 +33,7 @@ def twrite(contentDict):
 	print(cmd, file=FP)
 
 def upload(contentDict):
-	respHello = twrite(Constant.MSG_HELLO)
-	if contentDict is None:
-		return respHello
-	resp = twrite(contentDict)
-	return resp
+	twrite(contentDict)
 
 
 def hello(tries=100):
@@ -52,10 +48,8 @@ def update_msg():
 		
 def get_msgs():
 	msgs = []
-	while MSGS.qsize() > 0:
-		line = MSGS.get()
-		print(line)
-		msgs.append(line)
+	for i in range(100):
+		msgs.append(FP.readline())
 	return msgs
 	
 	
@@ -65,14 +59,10 @@ class myThread (threading.Thread):
 		
 	def run(self):
 		try:
-			tries = 0
 			while True:
-				tries += 1
-				print('reading')
 				msg = FP.readline().strip()
-				zihao.parse_message(msg)
-				if tries > 100:
-					time.sleep(1)
+				if msg:
+					zihao.parse_message(msg)
 		except KeyboardInterrupt:
 			return
 			sys.exit(0)
