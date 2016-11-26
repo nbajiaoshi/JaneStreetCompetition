@@ -57,7 +57,9 @@ if __name__ == '__main__':
 					sell(order_id, symbol, price, size)
 					print('sell order_id={} symbol={} price={} size={}'.format(order_id, symbol, price, size))
 			if movement == 'h':
-				hello()
+				msgs = hello()
+				for msg in msgs:
+					print msg
 		except KeyboardInterrupt:
 			break
 		except:
