@@ -70,6 +70,7 @@ if __name__ == '__main__':
 				hello()
 				
 		except KeyboardInterrupt:
+			recorder.stop()
 			sys.exit(0)
 		except:
 			continue

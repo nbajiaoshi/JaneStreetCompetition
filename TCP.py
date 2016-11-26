@@ -78,6 +78,10 @@ class myThread (threading.Thread):
 				sys.stdout.flush()
 			except KeyboardInterrupt:
 				break
+		
+	def stop(self):
+        self._stop.set()
+
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='data process')
