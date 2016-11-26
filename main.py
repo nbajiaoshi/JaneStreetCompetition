@@ -9,7 +9,7 @@ if __name__ == '__main__':
 	parser.add_argument('--istest', '-t', action="store_true", help='reload data, else load from cache')
 	args = parser.parse_args()
 	
-	connect(args.port, args.istest)
+	FP = connect(args.port, args.istest)
 	print('connect ok')
 	hello()
 	

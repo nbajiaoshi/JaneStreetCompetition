@@ -20,7 +20,7 @@ def connect(port, istest):
 		host = "test-exch-{}".format(Constant.TEAMNAME)
 	s.connect((host, port))
 	FP = s.makefile('w+', 1)
-
+	return FP
 
 def tread():
 	global FP
