@@ -6,11 +6,11 @@ import json
 import socket
 import thread
 import argparse
-
+import Queue
 import Constant
 
 FP = None
-MSGS = []
+MSGS = Queue.Queue(maxsize=1000)
 
 
 def connect(port, istest):
@@ -27,10 +27,8 @@ def tread():
     global FP
     return FP.readline().strip()
 
-
-def readall(msgs):
+def readall():
 	lines = FP.readlines()
-	msgs = lines
 	return lines
 
 def twrite(contentDict):
@@ -53,11 +51,10 @@ def hello():
 	return respHello
 	
 def update_msg():
-	lines = readall()
-	if len(lines) > 100:
-		MSGS = lines[:100]
-	else:
-		MSGS = lines
+	while True:
+		lines = readall()
+		for line in lines:
+			MSGS.put(line)
 		
 def show_msg():
 	for line in MSGS:
@@ -65,7 +62,7 @@ def show_msg():
 	
 def start(port, istrue):
 	connect(port, istrue)
-	thread.start_new_thread ( get_msg, () )
+	thread.start_new_thread ( update_msg, () )
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='data process')
