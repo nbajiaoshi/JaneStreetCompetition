@@ -10,7 +10,6 @@ import Queue
 import Constant
 
 FP = None
-MSGS = Queue.Queue(maxsize=1000)
 
 
 def connect(port, istest):
@@ -47,8 +46,7 @@ def upload(contentDict):
 
 
 def hello():
-	respHello = twrite(Constant.MSG_HELLO)
-	return respHello
+	twrite(Constant.MSG_HELLO)
 	
 def update_msg():
 	while True:

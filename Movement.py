@@ -41,7 +41,10 @@ if __name__ == '__main__':
 	connect(args.port, args.istest)
 	print('connect ok')
 	hello()
-	print(readall)
+	
+	while True:
+		response = FP.readline()
+		zihao.parse(response)
 	# while True:
 	# 	cmd = raw_input('CMD: b|s order_id symbol price size\n')
 	# 	parts = cmd.strip().split(' ')
