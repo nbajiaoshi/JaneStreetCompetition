@@ -47,18 +47,7 @@ def upload(contentDict):
 
 def hello(tries=100):
 	respHello = twrite(Constant.MSG_HELLO)
-	msgs = []
-	while respHello:
-		msgs.append(respHello)
-		if respHello[u'type'] != u'hello':
-			respHello = tread()
-			if tries is not None:
-				tries -= 1
-				if tries < 0:
-					break
-		else:
-			break
-	return msgs
+	return respHello
 	
 def update_msg():
 	while True:

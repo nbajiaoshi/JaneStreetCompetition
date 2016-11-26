@@ -40,6 +40,7 @@ if __name__ == '__main__':
 	
 	connect(args.port, args.istest)
 	print('connect ok')
+	hello()
 	recorder = myThread()
 	recorder.start()
 	# while True:
