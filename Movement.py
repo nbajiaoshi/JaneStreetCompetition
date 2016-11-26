@@ -1,0 +1,36 @@
+from __future__ import print_function
+
+import argparse
+
+import Constant
+from TCP import *
+
+
+def add(order_id, symbol, direction, price, size):
+	cmd = {"type": "add", "order_id": order_id, "symbol": symbol, "dir": direction, "price": price, "size": size}
+	return upload(cmd)
+	
+def convert(order_id, symbol, direction, size):
+	cmd = {"type": "convert", "order_id": order_id, "symbol": symbol, "dir": direction, "size": size}
+	return upload(cmd)
+
+def cancel():
+	cmd = {"type": "cancel", "order_id": order_id}
+	return upload(cmd)
+	
+def buy(order_id, symbol, price, size):
+	return add(order_id, symbol, 'BUY', price, size)
+	
+def sell(order_id, symbol, price, size):
+	return add(order_id, symbol, 'SELL', price, size)
+	
+
+if __name__ == '__main__':
+	parser = argparse.ArgumentParser(description='data process')
+	parser.add_argument('--port', '-p', type=int, help='port', default=25000)
+	args = parser.parse_args()
+	
+	connect(args.port)
+	print(buy(1, 'BOND', 995, 1000))
+	print(sell(2, 'BOND', 1005, 1000))
+	print(hello())

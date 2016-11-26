@@ -15,23 +15,32 @@ def connect(port):
 	s.connect(("test-exch-{}".format(Constant.teamname), port))
 	FP = s.makefile('w+', 1)
 	
-def read():
+def tread():
 	global FP
 	return FP.readline().strip()
 	
-def write(contentDict):
+def twrite(contentDict):
 	global FP
 	cmd = json.dumps(contentDict)
 	print(cmd, file=FP)
-	return json.loads(read(FP))
+	return json.loads(read())
 
 def upload(contentDict):
-	respHello = write(Constant.MSG_HELLO)
+	respHello = twrite(Constant.MSG_HELLO)
 	respType = respHello['type']
 	if respType['type'] != 'hello':
 		return False
-	resp = write(contentDict)
+	if contentDict is None:
+		return respHello
+	resp = twrite(contentDict)
 	return resp
+	
+def hello():
+	respHello = twrite(Constant.MSG_HELLO)
+	respType = respHello['type']
+	if respType['type'] != 'hello':
+		return False
+	return respHello
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='data process')
@@ -42,4 +51,4 @@ if __name__ == "__main__":
 	
 	connect(args.port)
 	resp = upload({"type": "add", "order_id": 1, "symbol": "BOND", "dir": "BUY", "price": 950, "size": 5})
-	print resp
+	print(resp)
