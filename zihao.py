@@ -62,6 +62,7 @@ def parse(msg):
 		except:
 			pass
 	elif mtype == 'fill':
+		print(msg)
 		symbol = str(msg['symbol'])
 		direction = 2 * int(msg['dir'] == 'BUY') - 1
 		POSITION[symbol] += direction * int(msg['size'])
