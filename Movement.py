@@ -19,9 +19,11 @@ def cancel():
 	return upload(cmd)
 	
 def buy(order_id, symbol, price, size):
+	print('buying:', order_id, symbol, price, size)
 	return add(order_id, symbol, 'BUY', price, size)
 	
 def sell(order_id, symbol, price, size):
+	print('selling:', order_id, symbol, price, size)
 	return add(order_id, symbol, 'SELL', price, size)
 	
 
@@ -31,8 +33,7 @@ if __name__ == '__main__':
 	parser.add_argument('--istest', '-t', action="store_true", help='reload data, else load from cache')
 	args = parser.parse_args()
 	
-	while true:
-		connect(args.port, args.istest)
-		print(buy(1, 'BOND', 999, 1000))
-		print(sell(2, 'BOND', 1000, 1000))
-		print(hello())
+	connect(args.port, args.istest)
+	print(buy(1, 'BOND', 999, 1000))
+	print(sell(2, 'BOND', 1000, 1000))
+	print(hello())

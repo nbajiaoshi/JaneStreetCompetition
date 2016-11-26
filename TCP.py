@@ -22,11 +22,19 @@ def tread():
 	global FP
 	return FP.readline().strip()
 	
+def readall():
+	lines = []
+	line = tread()
+	while line:
+		lines.append(line)
+		line = tread()
+	return lines
+	
 def twrite(contentDict):
 	global FP
 	cmd = json.dumps(contentDict)
 	print(cmd, file=FP)
-	return json.loads(tread())
+	return json.loads(readall())
 
 def upload(contentDict):
 	respHello = twrite(Constant.MSG_HELLO)
