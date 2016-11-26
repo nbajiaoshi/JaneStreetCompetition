@@ -1,6 +1,6 @@
 import json
 
-BOOK_DICT = {}
+BOOK_DICT = init_books()
 
 def init_books():
 	none_dict = {'BUY': [], 'SELL': []}
