@@ -70,7 +70,6 @@ class myThread (threading.Thread):
 	def run(self):
 		while True:
 			msg = FP.readline().strip()
-			print(msg)
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='data process')
