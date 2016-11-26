@@ -1,6 +1,5 @@
 import json
 
-BOOK_DICT = init_books()
 
 def init_books():
 	none_dict = {'BUY': [], 'SELL': []}
@@ -13,6 +12,9 @@ def init_books():
 				 'XLF': none_dict, 
 	}
 	return init_dict
+	
+	
+BOOK_DICT = init_books()
 
 def parse_message(line):
 	dic = json.loads(line)
