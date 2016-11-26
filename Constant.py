@@ -1,0 +1,1 @@
+teamname = 'suidynasty'
