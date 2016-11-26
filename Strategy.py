@@ -34,7 +34,7 @@ def get_fair_price(current_book, historical_trade):
 
 def should_buy(our_order, current_book):
     for order in our_order:
-        if order["dir"] == "BUY" and order["prize"] == current_book["buy"][0][0]:
+        if order["dir"] == "BUY" and order["price"] == current_book["buy"][0][0]:
             return False
     return True
 
@@ -42,10 +42,10 @@ def should_buy(our_order, current_book):
 def should_sell(our_order, current_book):
     return True
     for order in our_order:
-        if order["dir"] == "SELL" and order["prize"] > current_book["sell"][0][0] + 5:
+        if order["dir"] == "SELL" and order["price"] > current_book["sell"][0][0] + 5:
             Movement.cancel(order["order_id"])
     for order in our_order:
-        if order["dir"] == "SELL" and order["prize"] == current_book["sell"][0][0]:
+        if order["dir"] == "SELL" and order["price"] == current_book["sell"][0][0]:
             return False
     return True
 
