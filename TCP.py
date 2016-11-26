@@ -66,6 +66,7 @@ class myThread (threading.Thread):
 	def run(self):
 		try:
 			while True:
+				
 				msg = FP.readline().strip()
 				zihao.parse_message(msg)
 		except KeyboardInterrupt:
