@@ -50,7 +50,7 @@ def hello():
 	
 def update_msg():
 	while True:
-		lines = readall()
+		
 		for line in lines:
 			MSGS.put(line)
 		time.sleep(1)
@@ -77,3 +77,4 @@ if __name__ == "__main__":
     connect(args.port)
     resp = upload({"type": "add", "order_id": 1, "symbol": "BOND", "dir": "BUY", "price": 950, "size": 5})
     print(resp)
+	
