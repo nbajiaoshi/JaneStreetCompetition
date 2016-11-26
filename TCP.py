@@ -34,7 +34,7 @@ def twrite(contentDict):
 	global FP
 	cmd = json.dumps(contentDict)
 	print(cmd, file=FP)
-	return json.loads(readall())
+	return json.loads(tread())
 
 def upload(contentDict):
 	respHello = twrite(Constant.MSG_HELLO)
