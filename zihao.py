@@ -63,6 +63,7 @@ def parse(msg):
 			if len(TRADE[symbol] > 1000):
 				TRADE[symbol] = TRADE[symbol][-1000:]
 		except Exception as e:
+			print(msg)
 			print('@parse {}'.format(e))
 	elif mtype == 'fill':
 		print(msg)
