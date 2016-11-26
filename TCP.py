@@ -55,7 +55,7 @@ def hello():
 	
 def start(port, istest):
 	connect(port, istest)
-	thread.start_new_thread ( readall )
+	thread.start_new_thread ( readall, () )
 
 
 if __name__ == "__main__":
