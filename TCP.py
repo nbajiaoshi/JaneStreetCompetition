@@ -28,17 +28,13 @@ def tread():
 
 
 def readall():
-	line = tread()
-	while line:
-		line = tread()
-		print(line)
-	time.sleep(1)
+	lines = FP.readlines()
+	return lines
 
 def twrite(contentDict):
     global FP
     cmd = json.dumps(contentDict)
     print(cmd, file=FP)
-    return json.loads(tread())
 
 
 def upload(contentDict):
@@ -53,10 +49,11 @@ def hello():
 	respHello = twrite(Constant.MSG_HELLO)
 	return respHello
 	
-def start(port, istest):
-	connect(port, istest)
-	thread.start_new_thread ( readall, () )
-
+def show_msg():
+	lines = readall()
+	for line in lines:
+		print(line.strip())
+	return lines
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='data process')
