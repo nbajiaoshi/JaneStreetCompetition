@@ -45,6 +45,16 @@ POSITION = {
 			 'XLF': 0, 
 }
 
+IN_PRICE = {
+			'BOND': 0,
+			 'VALBZ': 0,
+			 'VALE': 0,
+			 'GS': 0,
+			 'MS': 0,
+			 'WFC': 0,
+			 'XLF': 0, 
+}
+
 '''
 	key: order_id
 	value:

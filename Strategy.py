@@ -40,7 +40,6 @@ def should_buy(our_order, current_book):
 
 
 def should_sell(our_order, current_book):
-    return True
     for order in our_order:
         if order["dir"] == "SELL" and order["price"] > current_book["sell"][0][0] + 5:
             Movement.cancel(order["order_id"])
