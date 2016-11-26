@@ -84,6 +84,7 @@ def parse(msg):
 		direction = str(msg['dir'])
 		orderid = int(msg['order_id'])
 		for i, order in enumerate(ORDERS[symbol]):
+			print(ORDERS[symbol])
 			if order['order_id'] == orderid:
 				ORDERS[symbol][i]['size'] -= int(msg['size'])
 				break
