@@ -79,12 +79,10 @@ def parse(msg):
 			print('@parse {}'.format(e))
 	elif mtype == 'fill':
 		print(msg)
-		print(ORDERS)
 		symbol = str(msg['symbol'])
 		direction = str(msg['dir'])
 		orderid = int(msg['order_id'])
 		for i, order in enumerate(ORDERS[symbol]):
-			print(ORDERS[symbol])
 			if order['order_id'] == orderid:
 				ORDERS[symbol][i]['size'] -= int(msg['size'])
 				break
