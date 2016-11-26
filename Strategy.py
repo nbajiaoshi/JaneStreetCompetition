@@ -66,13 +66,13 @@ def buy_higher_price(symbol, current_book):
 def sell_current_price(symbol, current_book):
 	global current_order_id
 	current_order_id += 1
-	Movement.buy(current_order_id, symbol, current_book["sell"][0], TRANSACTION_SIZE)
+	Movement.sell(current_order_id, symbol, current_book["sell"][0], TRANSACTION_SIZE)
 
 
 def sell_lower_price(symbol, current_book):
 	global current_order_id
 	current_order_id += 1
-	Movement.buy(current_order_id, symbol, current_book["sell"][0] - 1, TRANSACTION_SIZE)
+	Movement.sell(current_order_id, symbol, current_book["sell"][0] - 1, TRANSACTION_SIZE)
 
 
 def run_strategy(symbol, current_book, our_order, historical_trade):
