@@ -98,6 +98,8 @@ def parse(msg):
 				break
 		if direction == 'BUY':
 			IN_PRICE[symbol] = int(msg['price'])
+		else:
+			print(msg['price'], IN_PRICE[symbol])
 	elif mtype == 'ack':
 		pass
 	elif mtype == 'reject':
