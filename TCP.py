@@ -27,22 +27,11 @@ def tread():
 
 
 def readall():
-<<<<<<< HEAD
 	line = tread()
 	while line:
 		line = tread()
 		print(line)
-	
-=======
-    lines = []
-    line = tread()
-    while line:
-        lines.append(line)
-        line = tread()
-    return lines
 
-
->>>>>>> 09196dac5174f06a9815970a4c5b6e35a7603690
 def twrite(contentDict):
     global FP
     cmd = json.dumps(contentDict)
@@ -59,18 +48,13 @@ def upload(contentDict):
 
 
 def hello():
-<<<<<<< HEAD
 	respHello = twrite(Constant.MSG_HELLO)
 	return respHello
 	
 def start(port, istest):
 	connect(port, istest)
 	thread.start_new_thread ( readall )
-=======
-    respHello = twrite(Constant.MSG_HELLO)
-    return respHello
 
->>>>>>> 09196dac5174f06a9815970a4c5b6e35a7603690
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='data process')
