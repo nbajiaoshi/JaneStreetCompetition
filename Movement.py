@@ -8,25 +8,29 @@ from TCP import *
 
 
 def add(order_id, symbol, direction, price, size):
-	cmd = {"type": "add", "order_id": order_id, "symbol": symbol, "dir": direction, "price": price, "size": size}
-	return upload(cmd)
-	
+    cmd = {"type": "add", "order_id": order_id, "symbol": symbol, "dir": direction, "price": price, "size": size}
+    return upload(cmd)
+
+
 def convert(order_id, symbol, direction, size):
-	cmd = {"type": "convert", "order_id": order_id, "symbol": symbol, "dir": direction, "size": size}
-	return upload(cmd)
+    cmd = {"type": "convert", "order_id": order_id, "symbol": symbol, "dir": direction, "size": size}
+    return upload(cmd)
+
 
 def cancel():
-	cmd = {"type": "cancel", "order_id": order_id}
-	return upload(cmd)
-	
+    cmd = {"type": "cancel", "order_id": order_id}
+    return upload(cmd)
+
+
 def buy(order_id, symbol, price, size):
-	print('buying:', order_id, symbol, price, size)
-	return add(order_id, symbol, 'BUY', price, size)
-	
+    print('buying:', order_id, symbol, price, size)
+    return add(order_id, symbol, 'BUY', price, size)
+
+
 def sell(order_id, symbol, price, size):
-	print('selling:', order_id, symbol, price, size)
-	return add(order_id, symbol, 'SELL', price, size)
-	
+    print('selling:', order_id, symbol, price, size)
+    return add(order_id, symbol, 'SELL', price, size)
+
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='data process')
@@ -46,4 +50,3 @@ if __name__ == '__main__':
 		print(sell(2, 'BOND', 1001, 1000))
 		while True:
 			time.sleep(5)
-		
