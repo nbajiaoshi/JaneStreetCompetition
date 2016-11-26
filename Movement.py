@@ -63,6 +63,12 @@ if __name__ == '__main__':
 				msgs = hello()
 				for msg in msgs:
 					print(msg)
+			if movement == 'c':
+				FP.close()
+				connect(args.port, args.istest)
+				print('connect ok')
+				hello()
+				
 		except KeyboardInterrupt:
 			sys.exit(0)
 		except:
