@@ -3,6 +3,7 @@ from __future__ import print_function
 import sys
 import json
 import socket
+import thread
 import argparse
 
 import Constant
@@ -23,12 +24,10 @@ def tread():
 	return FP.readline().strip()
 	
 def readall():
-	lines = []
 	line = tread()
 	while line:
-		lines.append(line)
 		line = tread()
-	return lines
+		print(line)
 	
 def twrite(contentDict):
 	global FP
@@ -46,6 +45,10 @@ def upload(contentDict):
 def hello():
 	respHello = twrite(Constant.MSG_HELLO)
 	return respHello
+	
+def start(port, istest):
+	connect(port, istest)
+	thread.start_new_thread ( readall )
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description='data process')

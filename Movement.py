@@ -1,5 +1,6 @@
 from __future__ import print_function
 
+import time
 import argparse
 
 import Constant
@@ -33,7 +34,16 @@ if __name__ == '__main__':
 	parser.add_argument('--istest', '-t', action="store_true", help='reload data, else load from cache')
 	args = parser.parse_args()
 	
-	connect(args.port, args.istest)
-	print(buy(1, 'BOND', 1000, 1000))
-	print(sell(2, 'BOND', 1001, 1000))
-	print(hello())
+	try:
+		start(args.port, args.istest)
+		print(buy(1, 'BOND', 1000, 1000))
+		print(sell(2, 'BOND', 1001, 1000))
+		while True:
+			time.sleep(5)
+	except:
+		start(args.port, args.istest)
+		print(buy(1, 'BOND', 1000, 1000))
+		print(sell(2, 'BOND', 1001, 1000))
+		while True:
+			time.sleep(5)
+		
