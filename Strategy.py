@@ -35,7 +35,7 @@ def get_fair_price(current_book, historical_trade):
 def should_buy(our_order, current_book):
 	return True
 	for order in our_order:
-		if order["dir"] == "BUY" and order["prize"] == current_book["buy"][0]:
+		if order["dir"] == "BUY" and order["prize"] == current_book["buy"][0][0]:
 			return False
 	return True
 
@@ -43,10 +43,10 @@ def should_buy(our_order, current_book):
 def should_sell(our_order, current_book):
 	return True
 	for order in our_order:
-		if order["dir"] == "SELL" and order["prize"] > current_book["sell"][0] + 5:
+		if order["dir"] == "SELL" and order["prize"] > current_book["sell"][0][0] + 5:
 			Movement.cancel(order["order_id"])
 	for order in our_order:
-		if order["dir"] == "SELL" and order["prize"] == current_book["sell"][0]:
+		if order["dir"] == "SELL" and order["prize"] == current_book["sell"][0][0]:
 			return False
 	return True
 
@@ -54,25 +54,25 @@ def should_sell(our_order, current_book):
 def buy_current_price(symbol, current_book):
 	global current_order_id
 	current_order_id += 1
-	Movement.buy(current_order_id, symbol, current_book["buy"][0], TRANSACTION_SIZE)
+	Movement.buy(current_order_id, symbol, current_book["buy"][0][0], TRANSACTION_SIZE)
 
 
 def buy_higher_price(symbol, current_book):
 	global current_order_id
 	current_order_id += 1
-	Movement.buy(current_order_id, symbol, current_book["buy"][0] + 1, TRANSACTION_SIZE)
+	Movement.buy(current_order_id, symbol, current_book["buy"][0][0] + 1, TRANSACTION_SIZE)
 
 
 def sell_current_price(symbol, current_book):
 	global current_order_id
 	current_order_id += 1
-	Movement.sell(current_order_id, symbol, current_book["sell"][0], TRANSACTION_SIZE)
+	Movement.sell(current_order_id, symbol, current_book["sell"][0][0], TRANSACTION_SIZE)
 
 
 def sell_lower_price(symbol, current_book):
 	global current_order_id
 	current_order_id += 1
-	Movement.sell(current_order_id, symbol, current_book["sell"][0] - 1, TRANSACTION_SIZE)
+	Movement.sell(current_order_id, symbol, current_book["sell"][0][0] - 1, TRANSACTION_SIZE)
 
 
 def run_strategy(symbol, current_book, our_order, historical_trade):
