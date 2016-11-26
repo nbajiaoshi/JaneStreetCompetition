@@ -28,8 +28,9 @@ def tread():
 
 
 def readall():
-	lines = FP.readlines()
-	return lines
+    lines = FP.readlines()
+    return lines
+
 
 def twrite(contentDict):
     global FP
@@ -46,14 +47,16 @@ def upload(contentDict):
 
 
 def hello():
-	respHello = twrite(Constant.MSG_HELLO)
-	return respHello
-	
+    respHello = twrite(Constant.MSG_HELLO)
+    return respHello
+
+
 def show_msg():
-	lines = readall()
-	for line in lines:
-		print(line.strip())
-	return lines
+    lines = readall()
+    for line in lines:
+        print(line.strip())
+    return lines
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='data process')
